@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
+    server: {
+		host: 'l11-roles-perms.test',
+	},
     plugins: [
         laravel({
             input: [
