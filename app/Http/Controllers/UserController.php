@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -14,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $data = User::latest()->paginate(5);
-        return view('users.index', compact('data'));
+        return view('users.index',compact('data'));
     }
 
     /**
@@ -22,8 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'name')->all();
-        return view('users.create', compact('roles'));
+        $roles = Role::pluck('name','name')->all();
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -60,7 +64,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user):View
     {
         $user = User::find($id);
         $roles = Role::pluck('name', 'name')->all();
@@ -72,7 +76,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id):RedirectResponse
     {
         $this->validate($request, [
             'name' => 'required',
@@ -107,4 +111,6 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('success', 'User deleted successfully');
     }
+
+
 }

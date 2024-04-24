@@ -3,15 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
+
     function __construct()
     {
-        $this->middleware(['permission:role-list|role-create|role-edit|role-delete'], ['only' => ['index', 'store']]);
-        $this->middleware(['permission:role-create'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:role-edit'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:role-delete'], ['only' => ['destroy']]);
+        $this->middleware(
+            ['permission:role-list|role-create|role-edit|role-delete'],
+            ['only' => ['index', 'store']]);
+        $this->middleware(
+            ['permission:role-create'],
+            ['only' => ['create', 'store']]);
+        $this->middleware(
+            ['permission:role-edit'],
+            ['only' => ['edit', 'update']]);
+        $this->middleware(
+            ['permission:role-delete'],
+            ['only' => ['destroy']]);
     }
 
     /**
@@ -66,11 +79,12 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id):View
     {
         $role = Role::find($id);
         $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
+        $rolePermissions = DB::table("role_has_permissions")
+            ->where("role_has_permissions.role_id", $id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
