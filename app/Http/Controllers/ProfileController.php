@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 class ProfileController extends Controller
 {
     /**

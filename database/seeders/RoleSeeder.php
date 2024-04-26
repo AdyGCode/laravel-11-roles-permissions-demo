@@ -22,6 +22,7 @@ class RoleSeeder extends Seeder
         'product-delete'
     ];
 
+
     /**
      * Run the database seeds.
      */
@@ -36,6 +37,8 @@ class RoleSeeder extends Seeder
         $permissions = Permission::pluck('id', 'id')->all();
 
         $role->syncPermissions($permissions);
+
+
 
     }
 }

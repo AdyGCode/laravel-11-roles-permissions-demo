@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRoleRequest;
+use App\Http\Requests\UpdateRoleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -13,18 +15,19 @@ class RoleController extends Controller
 
     function __construct()
     {
-        $this->middleware(
-            ['permission:role-list|role-create|role-edit|role-delete'],
-            ['only' => ['index', 'store']]);
-        $this->middleware(
-            ['permission:role-create'],
-            ['only' => ['create', 'store']]);
-        $this->middleware(
-            ['permission:role-edit'],
-            ['only' => ['edit', 'update']]);
-        $this->middleware(
-            ['permission:role-delete'],
-            ['only' => ['destroy']]);
+
+//        $this->middleware(
+//            ['permission:role-list|role-create|role-edit|role-delete'],
+//            ['only' => ['index', 'store']]);
+//        $this->middleware(
+//            ['permission:role-create'],
+//            ['only' => ['create', 'store']]);
+//        $this->middleware(
+//            ['permission:role-edit'],
+//            ['only' => ['edit', 'update']]);
+//        $this->middleware(
+//            ['permission:role-delete'],
+//            ['only' => ['destroy']]);
     }
 
     /**
@@ -48,15 +51,17 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRoleRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+        $validated = $request->validated();
+
+        $role = Role::create([
+            'name' => $validated['name'],
         ]);
 
-        $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+        $permissions = $validated['permission'];
+
+        $role->syncPermissions($validated);
 
         return redirect()->route('roles.index')
             ->with('success', 'Role created successfully');
@@ -79,7 +84,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id):View
+    public function edit(string $id): View
     {
         $role = Role::find($id);
         $permission = Permission::get();
@@ -95,7 +100,7 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRoleRequest $request, string $id)
     {
         $this->validate($request, [
             'name' => 'required',
