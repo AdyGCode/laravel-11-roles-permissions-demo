@@ -15,25 +15,48 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // get the Super Admin and Admin roles for the Administrator, Lecturer and Student
+        $roleSuperAdmin = Role::whereName('Super-Admin')->get();
+        $roleAdmin = Role::whereName('Admin')->get();
+
         // Create admin User and assign the role to him.
-        $user = User::create([
+        $userAdmin = User::create([
+            'id' => 1,
             'name' => 'Administrator',
             'email' => 'admin@example.com',
             'password' => Hash::make('Password1')
         ]);
 
-        $role = Role::whereName('Admin')->get();
-        $user->assignRole([$role]);
+        $userAdmin->assignRole([$roleSuperAdmin]);
 
-        $user = User::create([
+        $userLecturer = User::create([
+            'id' => 500,
             'name' => 'Adrian Gould',
             'email' => 'adrian.gould@nmtafe.wa.edu.au',
             'password' => Hash::make('Password1')
         ]);
+        $userLecturer->assignRole([$roleSuperAdmin]);
+
+        $userStudent = User::create([
+            'id' => 501,
+            'name' => 'STUDENT NAME',
+            'email' => 'STUDENT.NAME@example.com',
+            'password' => Hash::make('Password1')
+        ]);
+        $userStudent->assignRole([$roleAdmin]);
 
 
-        $role = Role::whereName('Admin')->get();
-        $user->assignRole([$role]);
+        $userGuest = User::create([
+            'id' => 1000,
+            'name' => 'Dee Mouser',
+            'email' => 'de.mouser@example.com',
+            'password' => Hash::make('Password1')
+        ]);
+
+        $roleGuest = Role::create(['name' => 'guest']);
+        $roleGuest->givePermissionTo('product-list');
+        $roleGuest->givePermissionTo('product-show');
+        $userGuest->assignRole([$roleGuest]);
 
     }
 }

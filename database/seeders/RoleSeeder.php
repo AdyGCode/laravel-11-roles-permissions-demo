@@ -7,19 +7,15 @@ use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class RoleSeeder extends Seeder
 {
 
-     private $permissions = [
-        'role-list',
-        'role-create',
-        'role-edit',
-        'role-delete',
-        'product-list',
-        'product-create',
-        'product-edit',
-        'product-delete'
+    private $permissions = [
+        'role-list',      'role-show',      'role-create',     'role-edit',      'role-delete',
+        'product-list',   'product-show',   'product-create',  'product-edit',   'product-delete',
+        'user-list',      'user-show',      'user-create',     'user-edit',      'user-delete',
     ];
 
 
@@ -28,17 +24,29 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // Reset cached roles and permissions
+        app()[PermissionRegistrar::class]->forgetCachedPermissions();
+
+
+        // Create each of the permissions ready for role creation
         foreach ($this->permissions as $permission) {
             Permission::create(['name' => $permission]);
         }
 
-        $role = Role::create(['name' => 'Admin']);
+        // Generate the Super-Admin Role
+        $roleSuperAdmin = Role::create(['name' => 'Super-Admin']);
+        $permissionsAll = Permission::pluck('id', 'id')->all();
+        $roleSuperAdmin->syncPermissions($permissionsAll);
 
-        $permissions = Permission::pluck('id', 'id')->all();
+        // Generate the Admin Role
 
-        $role->syncPermissions($permissions);
-
-
+        $roleAdmin = Role::create(['name' => 'Admin']);
+        $roleAdmin->givePermissionTo('user-list');
+        $roleAdmin->givePermissionTo('user-edit');
+        $roleAdmin->givePermissionTo('user-show');
+        $roleAdmin->givePermissionTo('user-create');
+        $roleAdmin->givePermissionTo('user-delete');
 
     }
 }
