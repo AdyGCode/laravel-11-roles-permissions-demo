@@ -26,7 +26,7 @@
                         <h4 class="text-xl capitalize">{{$r->name}}</h4>
                     </header>
 
-                    <div class="flex flex-col gap-2 mb-4">
+                    <div class="flex flex-col gap-0 mb-4">
 
                       @if($canEdit)
                             <form class="flex flex-row align-middle mb-2 border-b p-4"
@@ -57,7 +57,8 @@
                             @if( ($r->name !== 'Admin' && $canEdit) ||
                                  ($r->name === 'Admin' && $canDeleteAdmins) ||
                                  ($r->name === 'Super-Admin' && $canDeleteSuperAdmins) )
-                                <form class="flex flex-row items-center hover:bg-neutral-100 px-4 py-1"
+                                <form class="flex flex-row items-center hover:bg-neutral-100 px-4 py-1
+                                group transition-all duration-500 ease-in-out"
                                       role="form"
                                       method="POST"
                                       action="{{ route('revokeRole') }}">
@@ -66,12 +67,15 @@
                                     <input type="hidden" name="member_id" value="{{ $u->id }}">
                                     <a href="/members/{{ $u->id }}" class="grow">{{ $u->name }}</a>
                                     <input type="submit"
-                                           class="text-red-800 hover:text-red-100
-                                                  inline-block align-middle text-center select-none
-                                                  border border-red-800 hover:border-red-100
-                                                  font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal
-                                                  no-underline py-1 px-2 leading-tight text-xs
-                                                  bg-red-200 hover:bg-red-800
+                                           class="align-middle text-center select-none
+                                                  rounded
+                                                  py-1 px-3
+                                                  no-underline text-xs
+                                                  text-red-800 hover:text-red-100
+                                                  border border-2 border-neutral-800 hover:border-red-100
+                                                  group-hover:border-red-500
+                                                  bg-neutral-200 hover:bg-red-500
+                                                  transition-all duration-500 ease-in-out
                                                   print:hidden"
                                            value=" X " title="Revoke">
                                 </form>
