@@ -16,6 +16,10 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.*')">
+                        {{ __('Users') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('admin.permissions')" :active="request()->routeIs('permissions')">
                         {{ __('Roles') }}
                     </x-nav-link>
