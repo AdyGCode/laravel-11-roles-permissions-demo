@@ -47,7 +47,7 @@ class UserController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->admin.assign-role($request->input('roles'));
 
         return redirect()->route('users.index')
             ->with('success', 'User created successfully');
@@ -97,7 +97,7 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        $user->admin.assign-role($request->input('roles'));
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');

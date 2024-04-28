@@ -35,6 +35,7 @@ class UserSeeder extends Seeder
             'email' => 'adrian.gould@nmtafe.wa.edu.au',
             'password' => Hash::make('Password1')
         ]);
+
         $userLecturer->assignRole([$roleSuperAdmin]);
 
         $userStudent = User::create([

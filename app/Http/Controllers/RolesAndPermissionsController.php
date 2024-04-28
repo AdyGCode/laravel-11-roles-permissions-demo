@@ -102,7 +102,7 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
             //optionally flash a session error message
             // flash()->warning('Note: Member already has the selected role. No action taken.');
 
-            return redirect(route('showAssignedRoles'));
+            return redirect(route('admin.permissions'));
         }
 
         // do the assignment
@@ -111,7 +111,7 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
         // optionally flash a success message
         // flash()->success($role->name . ' role assigned to ' . $member->name . '.');
 
-        return redirect(route('showAssignedRoles'))
+        return redirect(route('admin.permissions'))
             ->with('success', 'Role Created/Updated successfully');
     }
 
@@ -138,19 +138,19 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
             // flash a session error message
             // flash()->warning('Note: Member does not have the selected role. No action taken.');
 
-            return redirect(route('showAssignedRoles'));
+            return redirect(route('admin.permissions'));
         }
 
         // Prevent tampering with admins
         if ($role->name === 'Admin' && $request->user()->cannot('can delete admins')) {
             // flash()->warning('Action could not be taken.');
 
-            return redirect(route('showAssignedRoles'));
+            return redirect(route('admin.permissions'));
         }
         if ($role->name === 'Super-Admin' && $request->user()->cannot('can delete super-admins')) {
             // flash()->warning('Action could not be taken.');
 
-            return redirect(route('showAssignedRoles'));
+            return redirect(route('admin.permissions'));
         }
 
         // do the actual removal.
@@ -158,7 +158,7 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
 
         // flash()->success($role->name . ' role removed from ' . $member->name . '.');
 
-        return redirect(route('showAssignedRoles'))
+        return redirect(route('admin.permissions'))
             ->with('success', 'Role deleted successfully');
     }
 }

@@ -23,9 +23,9 @@ Route::middleware('auth')->group(function () {
 
 // role-assignment screen
 Route::group(['prefix' => 'admin', 'middleware' => ['role:Admin|Super-Admin']], function () {
-    Route::get('/permissions', [RolesAndPermissionsController::class, 'index'])->name('showAssignedRoles');
-    Route::post('/assign_role', [RolesAndPermissionsController::class, 'store'])->name('assignRole');
-    Route::delete('/revoke_role', [RolesAndPermissionsController::class, 'destroy'])->name('revokeRole');
+    Route::get('/permissions', [RolesAndPermissionsController::class, 'index'])->name('admin.permissions');
+    Route::post('/assign_role', [RolesAndPermissionsController::class, 'store'])->name('admin.assign-role');
+    Route::delete('/revoke_role', [RolesAndPermissionsController::class, 'destroy'])->name('admin.revoke-role');
 });
 
 require __DIR__ . '/auth.php';
