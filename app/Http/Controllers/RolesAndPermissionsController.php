@@ -32,7 +32,8 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
         // ensure admin has recently logged in, so it's not an unattended admin console being used
         $this->middleware('password.confirm');
 
-        // NOTE: These Gate:: definitions should be in an AuthServiceProvider or in a Model Policy, instead of in this Constructor.
+        // NOTE: These Gate:: definitions should be in an AuthServiceProvider or in a Model Policy,
+        // instead of in this Constructor.
         // establish 2 permission rules for checking authorization later in this controller
         Gate::define('can delete admins', function ($user) {
             return $user->hasAnyRole('Super-Admin', 'Admin');

@@ -40,7 +40,6 @@ class RoleSeeder extends Seeder
         $roleSuperAdmin->syncPermissions($permissionsAll);
 
         // Generate the Admin Role
-
         $roleAdmin = Role::create(['name' => 'Admin']);
         $roleAdmin->givePermissionTo('user-list');
         $roleAdmin->givePermissionTo('user-edit');
@@ -48,5 +47,13 @@ class RoleSeeder extends Seeder
         $roleAdmin->givePermissionTo('user-create');
         $roleAdmin->givePermissionTo('user-delete');
 
+        // Generate the user role
+        $roleUser = Role::create(['name' => 'user']);
+        $roleAdmin->givePermissionTo('user-list');
+        $roleUser->givePermissionTo('product-list');
+        $roleUser->givePermissionTo('product-edit');
+        $roleUser->givePermissionTo('product-show');
+        $roleUser->givePermissionTo('product-create');
+        $roleUser->givePermissionTo('product-delete');
     }
 }
