@@ -20,27 +20,34 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="font-sans antialiased">
-<div class="min-h-screen bg-neutral-100">
+<div class="min-h-screen bg-neutral-100 flex flex-between flex-col">
+
+    @include('layouts.dev-mode')
+
+    @include('layouts.navigation-guest')
 
     <!-- Page Heading -->
     @if (isset($header))
-        <header class="bg-neutral-800 shadow">
+        <header class="bg-neutral-100 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 {{ $header }}
             </div>
         </header>
     @endif
 
-    @include('layouts.dev-mode')
-
-
     <!-- Page Content -->
-    <main class="bg-neutral-100 dark:bg-neutral-900 grow">
-        <div class="mx-auto max-w-7xl container mt-6 px-6 py-4 overflow-hidden ">
+    <main class="bg-neutral-100 grow">
+        <div class="mx-auto max-w-7xl container mt- px-6 py-8 overflow-hidden ">
             {{ $slot }}
         </div>
     </main>
-</div>
 
+    <footer class="py-16 text-center text-sm text-black /70">
+        {{--        Footer for guest layout here--}}
+    </footer>
+
+    @include('layouts.dev-mode')
+
+</div>
 </body>
 </html>

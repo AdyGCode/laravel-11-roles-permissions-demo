@@ -8,13 +8,13 @@
 
     <article class="relative flex flex-col min-w-0
                     rounded-lg break-words
-                    bg-white dark:bg-neutral-950
-                    border border-neutral-300 dark:border-neutral-800 ">
+                    bg-white
+                    border border-neutral-300  ">
         <header>
             <h3 class="text-xl py-3 px-6 mb-3
                    bg-neutral-800
                    text-neutral-200
-                   border-b-1 border-neutral-300 dark:border-neutral-800
+                   border-b-1 border-neutral-300
                    rounded-t-lg">
                 Role Assignments
             </h3>
@@ -25,7 +25,7 @@
             @foreach($roles as $role)
 
                 <section class="w-full md:w-1/3 border shadow rounded
-                                border-neutral-300 dark:border-neutral-700">
+                                border-neutral-300 ">
                     <header class="flex-none bg-neutral-600 text-neutral-100 p-2 rounded-t">
                         <h4 class="text-xl capitalize">{{$role->name}}</h4>
                     </header>
@@ -34,7 +34,7 @@
                         @if($canEdit)
                             <form
                                 class="flex flex-row align-middle mb-2 border-b p-4
-                                       border-neutral-300 dark:border-neutral-700"
+                                       border-neutral-300 "
                                 role="form"
                                 method="POST"
                                 action="{{ route('admin.assign-role') }}">
@@ -78,7 +78,7 @@
                                  ($role->name === 'Admin' && $canDeleteAdmins) ||
                                  ($role->name === 'Super-Admin' && $canDeleteSuperAdmins) )
                                 <form class="flex flex-row items-center
-                                             hover:bg-neutral-100 dark:hover-neutral-700
+                                             hover:bg-neutral-100
                                              px-4 py-1
                                              group transition-all duration-500 ease-in-out"
                                       role="form"
