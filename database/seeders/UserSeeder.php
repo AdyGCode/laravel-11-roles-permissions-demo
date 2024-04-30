@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         // get the Super Admin and Admin roles for the Administrator, Lecturer and Student
         $roleSuperAdmin = Role::whereName('Super-Admin')->get();
         $roleAdmin = Role::whereName('Admin')->get();
-        $roleUser = Role::whereName('User')->get();
+        $roleMember = Role::whereName('Member')->get();
 
         // Create admin User and assign the role to him.
         $userAdmin = User::create([
@@ -51,14 +51,16 @@ class UserSeeder extends Seeder
         $userGuest = User::create([
             'id' => 1000,
             'name' => 'Dee Mouser',
-            'email' => 'de.mouser@example.com',
+            'email' => 'dee.mouser@example.com',
             'password' => Hash::make('Password1')
         ]);
 
-        $roleGuest = Role::create(['name' => 'guest']);
+        $roleGuest = Role::create(['name' => 'Guest']);
+        $roleGuest->givePermissionTo('members');
         $roleGuest->givePermissionTo('product-list');
         $roleGuest->givePermissionTo('product-show');
         $userGuest->assignRole([$roleGuest]);
+        $userGuest->assignRole([$roleMember]);
 
     }
 }

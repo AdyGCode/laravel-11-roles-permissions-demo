@@ -16,6 +16,7 @@ class RoleSeeder extends Seeder
         'role-list',      'role-show',      'role-create',     'role-edit',      'role-delete',
         'product-list',   'product-show',   'product-create',  'product-edit',   'product-delete',
         'user-list',      'user-show',      'user-create',     'user-edit',      'user-delete',
+        'members',
     ];
 
 
@@ -47,13 +48,13 @@ class RoleSeeder extends Seeder
         $roleAdmin->givePermissionTo('user-create');
         $roleAdmin->givePermissionTo('user-delete');
 
-        // Generate the user role
-        $roleUser = Role::create(['name' => 'user']);
-        $roleAdmin->givePermissionTo('user-list');
+        // Generate the Member role
+        $roleUser = Role::create(['name' => 'Member']);
         $roleUser->givePermissionTo('product-list');
         $roleUser->givePermissionTo('product-edit');
         $roleUser->givePermissionTo('product-show');
         $roleUser->givePermissionTo('product-create');
         $roleUser->givePermissionTo('product-delete');
+        $roleUser->givePermissionTo('members');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StaticPageController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,14 @@ Route::group(['prefix' => 'admin',
         ->name('admin.revoke-role');
 
     Route::resource('/users',UserController::class);
+});
+
+Route::group(['prefix' => 'members',
+              'middleware' => ['auth','role:User|Admin|Super-Admin']], function () {
+
+    Route::get('/home', [StaticPageController::class, 'index'])
+        ->name('members.home');
+
 });
 
 require __DIR__ . '/auth.php';
