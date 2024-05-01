@@ -69,6 +69,12 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
             ->with('roles')
             ->get();
 
+
+        // Build conditional values for actions
+        $canEdit = auth()->user()->can('assign roles');
+        $canDeleteAdmins = auth()->user()->can('can delete admins');
+        $canDeleteSuperAdmins = auth()->user()->can('can delete super-admins');
+
         return view('admin.roles_editor',
             [
                 'roles' => $roles,

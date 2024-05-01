@@ -13,6 +13,7 @@ class RoleSeeder extends Seeder
 {
 
     private $permissions = [
+        'assign roles',
         'role-list',      'role-show',      'role-create',     'role-edit',      'role-delete',
         'product-list',   'product-show',   'product-create',  'product-edit',   'product-delete',
         'user-list',      'user-show',      'user-create',     'user-edit',      'user-delete',
@@ -42,11 +43,13 @@ class RoleSeeder extends Seeder
 
         // Generate the Admin Role
         $roleAdmin = Role::create(['name' => 'Admin']);
+        $roleAdmin->givePermissionTo('assign roles');
         $roleAdmin->givePermissionTo('user-list');
         $roleAdmin->givePermissionTo('user-edit');
         $roleAdmin->givePermissionTo('user-show');
         $roleAdmin->givePermissionTo('user-create');
         $roleAdmin->givePermissionTo('user-delete');
+        $roleAdmin->givePermissionTo('members');
 
         // Generate the Member role
         $roleUser = Role::create(['name' => 'Member']);

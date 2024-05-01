@@ -92,7 +92,7 @@
                                     <input type="hidden" name="member_id" value="{{ $user->id }}">
 
                                     <a href="{{ route('users.show', $user->id ) }}"
-                                       class="grow text-neutral-600 hover:text-neutral-200">
+                                       class="px-4 grow text-neutral-600 hover:text-neutral-200">
                                         {{ $user->name }}
                                     </a>
 
@@ -108,12 +108,12 @@
                                                   transition-all duration-500 ease-in-out
                                                   print:hidden"
                                             value=" X " title="Revoke">
-                                        <i class="fa fa-times text-lg" title="X Symbol for deletion"></i>
+                                        <i class="fa fa-times text-lg" title="Revoke Role for User {{$user->name}}"></i>
                                     </button>
                                 </form>
                             @else
                                 <a href="{{ route('users.show', $user->id ) }}"
-                                   class="bg-neutral-200 text-neutral-800">
+                                   class="px-4 grow text-neutral-600 hover:text-neutral-200">
                                     {{ $user->name }}
                                 </a>
                             @endif
