@@ -12,19 +12,32 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect(route('members.home'));
 })->middleware(['auth', 'verified',])->name('dashboard');
 
+
+// Members home page
+Route::group(['prefix' => 'members',
+    'middleware' => ['auth', 'verified', 'role:Member|Admin|Super-Admin']], function () {
+
+    Route::get('/home', [StaticPageController::class, 'index'])
+        ->name('members.home');
+
+});
+
+// Logged in User Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit',])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update',])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy',])->name('profile.destroy');
 });
 
+
 // role-assignment screen
 Route::group(['prefix' => 'admin',
-              'middleware' => ['auth','verified','role:Admin|Super-Admin']], function () {
+    'middleware' => ['auth', 'verified', 'role:Admin|Super-Admin']], function () {
 
     Route::get('/permissions', [RolesAndPermissionsController::class, 'index'])
         ->name('admin.permissions');
@@ -35,15 +48,8 @@ Route::group(['prefix' => 'admin',
     Route::delete('/revoke_role', [RolesAndPermissionsController::class, 'destroy'])
         ->name('admin.revoke-role');
 
-    Route::resource('/users',UserController::class);
+    Route::resource('/users', UserController::class);
 });
 
-Route::group(['prefix' => 'members',
-              'middleware' => ['auth','role:User|Admin|Super-Admin']], function () {
-
-    Route::get('/home', [StaticPageController::class, 'index'])
-        ->name('members.home');
-
-});
 
 require __DIR__ . '/auth.php';

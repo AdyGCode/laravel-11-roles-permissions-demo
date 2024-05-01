@@ -43,7 +43,7 @@
     </main>
 
     <footer class="py-16 text-center text-sm text-black /70">
-        {{--        Footer for guest layout here--}}
+        Guest / Public Facing Footer
     </footer>
 
     @include('layouts.dev-mode')

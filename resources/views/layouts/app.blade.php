@@ -27,8 +27,8 @@
 
     <!-- Page Heading -->
     @if (isset($header))
-        <header class="bg-neutral-100 shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <header class="bg-neutral-200">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
                 {{ $header }}
             </div>
         </header>
@@ -42,7 +42,7 @@
     </main>
 
     <footer class="py-16 text-center text-sm text-black /70">
-        {{--        Footer for guest layout here--}}
+        User Facing Application Footer
     </footer>
 
     @include('layouts.dev-mode')

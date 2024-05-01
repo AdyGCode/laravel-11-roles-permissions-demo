@@ -5,11 +5,11 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <article class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <header>
-                    <h3 class="text-2xl">Welcome {{ $auth->user->name }}</h3>
+                <header class="p-6">
+                    <h3 class="text-2xl">Welcome {{ Auth::user()->name }}</h3>
                 </header>
                 <div class="p-6 text-neutral-900">
                     {{ __("You're logged in!") }}

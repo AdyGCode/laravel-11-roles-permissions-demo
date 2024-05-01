@@ -1,7 +1,7 @@
 <x-admin-layout>
 
     <x-slot name="header">
-        <h2 class="text-2xl text-amber-50">
+        <h2 class="text-2xl text-amber-500">
             User Role Editor
         </h2>
     </x-slot>
@@ -9,7 +9,7 @@
     <article class="relative flex flex-col min-w-0
                     rounded-lg break-words
                     bg-white
-                    border border-neutral-300  ">
+                    border border-neutral-300 shadow ">
         <header>
             <h3 class="text-xl py-3 px-6 mb-3
                    bg-neutral-800
@@ -80,7 +80,7 @@
                                  ($role->name === 'Admin' && $canDeleteAdmins) ||
                                  ($role->name === 'Super-Admin' && $canDeleteSuperAdmins) )
                                 <form class="flex flex-row items-center
-                                             hover:bg-neutral-100
+                                             hover:bg-neutral-300 hover:text-neutral-300
                                              px-4 py-1
                                              group transition-all duration-500 ease-in-out"
                                       role="form"
@@ -94,7 +94,8 @@
                                     <input type="hidden" name="member_id" value="{{ $user->id }}">
 
                                     <a href="{{ route('users.show', $user->id ) }}"
-                                       class="px-4 grow text-neutral-600 hover:text-neutral-200">
+                                       class="px-4 grow text-neutral-900
+                                              transition-all duration-500 ease-in-out">
                                         {{ $user->name }}
                                     </a>
                                     @can('role-revoke')

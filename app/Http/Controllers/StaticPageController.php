@@ -24,6 +24,7 @@ class StaticPageController extends Controller implements HasMiddleware
 
     function index():View
     {
+
         return view('static.user-home');
     }
 }
