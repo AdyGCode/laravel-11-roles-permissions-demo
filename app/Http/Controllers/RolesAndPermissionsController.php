@@ -71,18 +71,13 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
 
 
         // Build conditional values for actions
-        $canEdit = auth()->user()->can('assign roles');
+        $canEdit = auth()->user()->can(['role-assign','role-revoke',]);
         $canDeleteAdmins = auth()->user()->can('can delete admins');
         $canDeleteSuperAdmins = auth()->user()->can('can delete super-admins');
 
         return view('admin.roles_editor',
-            [
-                'roles' => $roles,
-                'users' => $users->prepend($select),
-                'canEdit' => auth()->user()->can('assign roles'),
-                'canDeleteAdmins' => auth()->user()->can('can delete admins'),
-                'canDeleteSuperAdmins' => auth()->user()->can('can delete super-admins'),
-            ]);
+            compact(['roles', 'users', 'canEdit', 'canDeleteAdmins', 'canDeleteSuperAdmins',]));
+
     }
 
 
@@ -91,7 +86,7 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
-        \abort_unless($request->user()->can('assign roles'), '403',
+        \abort_unless($request->user()->can('role-assign'), '403',
             'You do not have permission to make Role assignments.');
 
         $rules = [
@@ -128,7 +123,7 @@ class RolesAndPermissionsController extends Controller implements HasMiddleware
      */
     public function destroy(Request $request)
     {
-        \abort_unless($request->user()->can('assign roles'), '403',
+        \abort_unless($request->user()->can('role-assign'), '403',
             'You do not have permission to change Role assignments.');
 
         $rules = [

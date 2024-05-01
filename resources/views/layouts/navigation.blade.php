@@ -22,7 +22,7 @@
                         </x-nav-link>
                     @endcan
 
-                    @can('assign roles')
+                    @can('role-assign')
                         <x-nav-link :href="route('admin.permissions')" :active="request()->routeIs('permissions')">
                             {{ __('Roles') }}
                         </x-nav-link>

@@ -32,49 +32,51 @@
 
                     <div class="flex flex-col gap-0 mb-4 flex-wrap">
                         @if($canEdit)
-                            <form
-                                class="flex flex-row align-middle mb-2 border-b p-4
+                            @can('role-assign')
+                                <form
+                                    class="flex flex-row align-middle mb-2 border-b p-4
                                        border-neutral-300 "
-                                role="form"
-                                method="POST"
-                                action="{{ route('admin.assign-role') }}">
+                                    role="form"
+                                    method="POST"
+                                    action="{{ route('admin.assign-role') }}">
 
-                                @csrf
-{{--                                @method('post')--}}
+                                    @csrf
+                                    {{--                                @method('post')--}}
 
-                                <input type="hidden"
-                                       name="role_id"
-                                       value="{{ $role->id }}" >
+                                    <input type="hidden"
+                                           name="role_id"
+                                           value="{{ $role->id }}">
+                                    <div class="flex flex-row gap-4 items-center">
+                                        <label
+                                            class="text-neutral-700 leading-normal p-0 grow"
+                                            for="role-id-{{ $role->id }}">Add:</label>
 
-                                <div class="flex flex-row gap-4 items-center">
-                                    <label
-                                        class="text-neutral-700 leading-normal p-0 grow"
-                                        for="role-id-{{ $role->id }}">Add:</label>
+                                        <div class="grow -ml-1" id="input-r-{{$role->id}}">
+                                            @include('admin._member_selector',
+                                                    ['fieldname' => 'member_id',
+                                                     'field_id' => 'role-id-'.$role->id,
+                                                      'current' => null,
+                                                      'users' => $users])
+                                        </div>
 
-                                    <div class="grow -ml-1" id="input-r-{{$role->id}}">
-                                        @include('admin._member_selector',
-                                                ['fieldname' => 'member_id',
-                                                 'field_id' => 'role-id-'.$role->id,
-                                                  'current' => null,
-                                                  'users' => $users])
-                                    </div>
-
-                                    <button type="submit"
-                                            class="align-middle text-center leading-normal select-none
+                                        <button type="submit"
+                                                class="align-middle text-center leading-normal select-none
                                                    border border-blue-600
                                                    rounded py-1.5 px-2
                                                    no-underline flex-none
                                                    bg-blue-200 hover:bg-blue-600
                                                    text-blue-800 hover:text-blue-200
                                                    transition-all duration-300 ease-in-out">
-                                        <i class="fa fa-save text-xl"></i> Add
-                                    </button>
-                                </div>
-                            </form>
+                                            <i class="fa fa-save text-xl"></i> Add
+                                        </button>
+                                    </div>
+                                </form>
+                            @endcan
                         @endif
 
                         @foreach ($role->users as $user)
                             @if( ($role->name !== 'Admin' && $canEdit) ||
+                                 ($role->name === 'Admin' && $canEdit) ||
                                  ($role->name === 'Admin' && $canDeleteAdmins) ||
                                  ($role->name === 'Super-Admin' && $canDeleteSuperAdmins) )
                                 <form class="flex flex-row items-center
@@ -95,9 +97,9 @@
                                        class="px-4 grow text-neutral-600 hover:text-neutral-200">
                                         {{ $user->name }}
                                     </a>
-
-                                    <button type="submit"
-                                            class="align-middle text-center select-none
+                                    @can('role-revoke')
+                                        <button type="submit"
+                                                class="align-middle text-center select-none
                                                   rounded
                                                   py-1 px-4
                                                   no-underline text-xs
@@ -107,9 +109,11 @@
                                                   bg-neutral-200 hover:bg-red-500
                                                   transition-all duration-500 ease-in-out
                                                   print:hidden"
-                                            value=" X " title="Revoke">
-                                        <i class="fa fa-times text-lg" title="Revoke Role for User {{$user->name}}"></i>
-                                    </button>
+                                                value=" X " title="Revoke">
+                                            <i class="fa fa-times text-lg"
+                                               title="Revoke Role for User {{$user->name}}"></i>
+                                        </button>
+                                    @endcan
                                 </form>
                             @else
                                 <a href="{{ route('users.show', $user->id ) }}"

@@ -27,18 +27,19 @@ class UserSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => Hash::make('Password1')
         ]);
-
         $userAdmin->assignRole([$roleSuperAdmin]);
 
+        // Create Second Super Admin
         $userLecturer = User::create([
             'id' => 500,
             'name' => 'Adrian Gould',
             'email' => 'adrian.gould@nmtafe.wa.edu.au',
             'password' => Hash::make('Password1')
         ]);
-
         $userLecturer->assignRole([$roleSuperAdmin]);
 
+
+        // Create Admin
         $userStudent = User::create([
             'id' => 501,
             'name' => 'STUDENT NAME',
@@ -48,13 +49,13 @@ class UserSeeder extends Seeder
         $userStudent->assignRole([$roleAdmin]);
 
 
+        // Create Guest (unverified user)
         $userGuest = User::create([
             'id' => 1000,
             'name' => 'Dee Mouser',
             'email' => 'dee.mouser@example.com',
             'password' => Hash::make('Password1')
         ]);
-
         $roleGuest = Role::create(['name' => 'Guest']);
         $roleGuest->givePermissionTo('members');
         $roleGuest->givePermissionTo('product-list');
