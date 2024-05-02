@@ -176,10 +176,10 @@ to [https://choosealicense.com/](https://choosealicense.com/).
 [forks-shield]: http://img.shields.io/github/forks/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [forks-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
-[clones-shield]: http://img.shields.io/github/forks/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[clones-shield]: http://img.shields.io/github/languages/count/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [clones-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
-[downloads-shield]: http://img.shields.io/github/downloads/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[downloads-shield]: http://img.shields.io/github/downloads/adygcode/laravel-11-roles-permissions-demo/total?style=for-the-badge
 [downloads-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
 [issues-shield]: http://img.shields.io/github/issues/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
