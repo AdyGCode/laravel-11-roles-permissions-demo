@@ -71,16 +71,10 @@ TO DO: Add extra, or update the contents as needed, then remove this line.
 
 ## Usage
 
-TO DO: Provide instructions and examples for use. Include screenshots as 
-needed.
+> Add details of how to use this demonstration application
 
-To add a screenshot, create an `assets/images` folder in your repository and
-upload your screenshot to it. Then, using the relative filepath, add it to
-your README using the following syntax:
+![Admin Dashboard](storage/app/public/images/laravel-perms-roles.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -88,11 +82,14 @@ your README using the following syntax:
 ## Credits
 
 - Laravel Permission. (n.d.) Spatie.com. https://spatie.be/docs/laravel-permission/v6/introduction
+- Role And Permission In Laravel 10 using Spatie: The Definitive Guide. 
+  (2023) Medium.com https://medium.com/@prevailexcellent/role-and-permission-in-laravel-10-using-spatie-the-definitive-guide-2023-57bb6b56abcd
+
+### General Credits
+
 - Font Awesome. (n.d.). Fontawesome.com. https://fontawesome.com
 - Laravel - The PHP Framework For Web Artisans. (2011). Laravel.com. https://laravel.com
-- Laravel Bootcamp - Learn the PHP Framework for Web Artisans. (n.d.). Bootcamp.laravel.com. https://bootcamp.laravel.com/
 - PHP: Hypertext Preprocessor. (n.d.). Www.php.net. https://php.net
-- Professional README Guide. (n.d.). Coding-Boot-Camp.github.io. Retrieved April 15, 2024, from https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide
 - TailwindCSS. (2023). Tailwind CSS - Rapidly build modern websites 
   without ever leaving your HTML. Tailwindcss.com. https://tailwindcss.com/
 
@@ -104,8 +101,10 @@ your README using the following syntax:
 
 [![Forks][forks-shield]][forks-url]
 [![Downloads][downloads-shield]][downloads-url]
+
 [![Languages][languages-shield]][languages-url]
 [![Issues][issues-shield]][issues-url]
+
 [![Educational Community Licence][licence-shield]][licence-url]
 
 
@@ -172,7 +171,7 @@ corporate or other materials both digital and non-digital.
 [issues-shield]: http://img.shields.io/github/issues/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [issues-url]: https://github.com/adygcode/laravel-11-roles-permissions-demo/issues
 
-[licence-shield]: https://img.shields.io/badge/opensourceinitiative-3DA639.svg?style=for-the-badge
+[licence-shield]: https://img.shields.io/badge/opensourceinitiative-3DA639?style=for-the-badge
 [licence-url]: https://github.com/adygcode/laravel-11-roles-permissions-demo/blob/main/License.md
 
 [product-screenshot]: images/screenshot.png
