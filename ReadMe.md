@@ -119,6 +119,8 @@ your README using the following syntax:
 -->
 
 [![Forks][forks-shield]][forks-url]
+[![Clones][clones-shield]][clones-url]
+[![Downloads][downloads-shield]][downloads-url]
 [![Issues][issues-shield]][issues-url]
 [![Educational Community Licence][licence-shield]][licence-url]
 
@@ -127,35 +129,18 @@ your README using the following syntax:
 
 ## Features
 
-Workopia features include, but are not limited to:
+- Login, Register, Logout
+- Guest, Member, Admin & Super-Admin Roles
+- Member Dashboard
+- Admin Dashboard
 
-#### Work Listings
-Work listings have the usual CRUD/BREAD operations including:
-
-* Browse Listings [Guest, User, Admin]
-* Retrieve Listing [Guest, User, Admin]
-    * includes search 
-* Edit Listing [Admin, Owner]
-* Update Listing [Admin, Owner]
-* Delete Listing [Admin, Owner]
-
-#### Users
-* User self registration [Guest]
-* Login [Registered User]
-* Logout [Registered User]
-* Profile Edit [Admin, Owner]
-* Account admin [Admin, Owner]
-
-#### Administration
-* Work BREAD [Admin]
-* User BREAD [Admin]
-* Permissions Admin [Admin]
+> More features may be added in the future
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Tests
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+> Tests to be developed
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -163,9 +148,9 @@ Go the extra mile and write tests for your application. Then provide examples on
 
 ## Contact
 
-Your Name - @twitter_handle - email@email_client.com
+Adrian Gould - Adrian.Gould@nmtafe.wa.edu.au
 
-Project Link: https://github.com/github_username/repo_name
+Project Link: https://github.com/AdyGCode/laravel-11-roles-permissions-demo
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -185,19 +170,17 @@ to [https://choosealicense.com/](https://choosealicense.com/).
 
 
 
----
-
-
-
-TO DO: Update the links in the MarkDown Links and Images section of the 
-original MarkDown document as needed. The links are not visible in the 
-rendered page on GitHub. 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [forks-shield]: http://img.shields.io/github/forks/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [forks-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
+
+[clones-shield]: http://img.shields.io/github/forks/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[clones-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
+
+[downloads-shield]: http://img.shields.io/github/downloads/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[downloads-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
 [issues-shield]: http://img.shields.io/github/issues/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [issues-url]: https://github.com/adygcode/laravel-11-roles-permissions-demo/issues
