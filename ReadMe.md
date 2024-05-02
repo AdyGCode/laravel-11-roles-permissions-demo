@@ -100,23 +100,7 @@ your README using the following syntax:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ## Badges
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
-***
-*** Forks, Issues and Licence Shields will NOT appear for Private Repos.
-*** You may want to remove this section for this assessment.
-*** Delete this block of comments once you have edited this ReadMe.
-***
-***
--->
 
 [![Forks][forks-shield]][forks-url]
 [![Downloads][downloads-shield]][downloads-url]
@@ -130,9 +114,13 @@ your README using the following syntax:
 ## Features
 
 - Login, Register, Logout
+    - Out of the box Laravel Breeze using Sanctum 
 - Guest, Member, Admin & Super-Admin Roles
+    - Implemented using Spatie Permissions 
 - Member Dashboard
+    - Just a welcome dashboard 
 - Admin Dashboard
+    - includes a simple set of 'cards' with counts of users, roles et al.   
 
 > More features may be added in the future
 
@@ -158,13 +146,12 @@ Project Link: https://github.com/AdyGCode/laravel-11-roles-permissions-demo
 
 ## Licence
 
-TO DO: Summarise/define the Licence here. Link to the Licence file.
+Please see the [Educational Community License](License.md) for more details.
 
-The last section of a high-quality README file is the licence. This lets other
-developers know what they can and cannot do with your project. If you need
-help choosing a licence, refer
-to [https://choosealicense.com/](https://choosealicense.com/).
-
+Any code based upon this project must also give the appropriate credit 
+both in the source code and also on nay associated promotional, educational, 
+corporate or other materials both digital and non-digital. 
+ 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -185,7 +172,7 @@ to [https://choosealicense.com/](https://choosealicense.com/).
 [issues-shield]: http://img.shields.io/github/issues/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [issues-url]: https://github.com/adygcode/laravel-11-roles-permissions-demo/issues
 
-[licence-shield]: https://img.shields.io/github/license/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[licence-shield]: https://img.shields.io/badge/opensourceinitiative-3DA639.svg?style=for-the-badge
 [licence-url]: https://github.com/adygcode/laravel-11-roles-permissions-demo/blob/main/License.md
 
 [product-screenshot]: images/screenshot.png
