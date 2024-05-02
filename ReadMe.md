@@ -119,8 +119,8 @@ your README using the following syntax:
 -->
 
 [![Forks][forks-shield]][forks-url]
-[![Clones][clones-shield]][clones-url]
 [![Downloads][downloads-shield]][downloads-url]
+[![Languages][languages-shield]][languages-url]
 [![Issues][issues-shield]][issues-url]
 [![Educational Community Licence][licence-shield]][licence-url]
 
@@ -176,8 +176,8 @@ to [https://choosealicense.com/](https://choosealicense.com/).
 [forks-shield]: http://img.shields.io/github/forks/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
 [forks-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
-[clones-shield]: http://img.shields.io/github/languages/count/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
-[clones-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
+[languages-shield]: http://img.shields.io/github/languages/count/adygcode/laravel-11-roles-permissions-demo.svg?style=for-the-badge
+[languages-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
 
 [downloads-shield]: http://img.shields.io/github/downloads/adygcode/laravel-11-roles-permissions-demo/total?style=for-the-badge
 [downloads-url]: https://github.com/AdyGCode/laravel-11-roles-permissions-demo/network/members
