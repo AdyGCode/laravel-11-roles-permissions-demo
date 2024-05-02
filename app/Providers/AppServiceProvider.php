@@ -6,6 +6,9 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\Gate;
 
+use Illuminate\Support\Collection;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**

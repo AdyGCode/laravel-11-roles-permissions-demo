@@ -41,8 +41,8 @@
         </div>
     </main>
 
-    <footer class="py-16 text-center text-sm text-black /70">
-        User Facing Application Footer
+    <footer class="py-16 text-center text-sm bg-neutral-700 text-neutral-200">
+        <p>User Facing Application Footer</p>
     </footer>
 
     @include('layouts.dev-mode')

@@ -13,19 +13,19 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::get('/dashboard', function () {
-    return redirect(route('members.home'));
-})->middleware(['auth', 'verified',])->name('dashboard');
+// Administration Dashboard
+Route::get('/dashboard', [StaticPageController::class, 'admin'])
+    ->middleware(['auth', 'verified', 'role:Admin|Super-Admin'])
+    ->name('dashboard');
 
 
 // Members home page
-Route::group(['prefix' => 'members',
-    'middleware' => ['auth', 'verified', 'role:Member|Admin|Super-Admin']], function () {
-
-    Route::get('/home', [StaticPageController::class, 'index'])
-        ->name('members.home');
-
-});
+Route::group(['prefix' => 'members', 'middleware' => ['auth', 'verified', 'role:Member|Admin|Super-Admin']],
+    function () {
+        Route::get('/home', [StaticPageController::class, 'index'])
+            ->name('members.home');
+    }
+);
 
 // Logged in User Profile
 Route::middleware('auth')->group(function () {
@@ -36,8 +36,10 @@ Route::middleware('auth')->group(function () {
 
 
 // role-assignment screen
-Route::group(['prefix' => 'admin',
-    'middleware' => ['auth', 'verified', 'role:Admin|Super-Admin']], function () {
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'verified', 'role:Admin|Super-Admin']
+], function () {
 
     Route::get('/permissions', [RolesAndPermissionsController::class, 'index'])
         ->name('admin.permissions');
@@ -52,4 +54,4 @@ Route::group(['prefix' => 'admin',
 });
 
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
