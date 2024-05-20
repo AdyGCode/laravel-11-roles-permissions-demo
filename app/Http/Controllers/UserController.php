@@ -67,6 +67,11 @@ class UserController extends Controller
      */
     public function edit(User $user):View
     {
+        /*
+         * Pluck is used to get just the "name" field from the Roles
+         * This then is used to show the possible roles on the admin page
+         * and allow the allocation of the role to the user.
+         */
         $roles = Role::pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
@@ -78,6 +83,17 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id):RedirectResponse
     {
+        /*
+         * Validation may be completed in the method or in a UpdateUserRequest
+         *
+         * If we have an UpdateUserRequest the rules could be moved
+         * into the file and the UpdateUserRequest would replace the
+         * Request class in the pub func update().
+         *
+         * Also if this is done, you need to make sure authorize()
+         * returns true. You could also check to see if the user is
+         * logged in and return true when they are.
+         */
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
@@ -96,7 +112,7 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id', $id)->delete();
 
-        $user->admin.assign-role($request->input('roles'));
+        $user->admin->assignrole($request->input('roles'));
 
         return redirect()->route('users.index')
             ->with('success', 'User updated successfully');
