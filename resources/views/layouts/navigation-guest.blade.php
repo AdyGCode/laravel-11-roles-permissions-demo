@@ -34,12 +34,16 @@
                         <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
                             {{ __('Register') }}
                         </x-nav-link>
+
                     @endauth
                 </div>
             @endif
+
 
         </div>
 
     </div>
 
 </nav>
+
+

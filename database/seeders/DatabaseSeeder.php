@@ -18,11 +18,6 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class, // relies on the roles being present first!
         ]);
 
-        // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
     }
 }

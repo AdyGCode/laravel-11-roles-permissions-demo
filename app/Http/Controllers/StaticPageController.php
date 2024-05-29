@@ -26,9 +26,14 @@ class StaticPageController extends Controller implements HasMiddleware
         ];
     }
 
+    function guest(): View
+    {
+        return view('static.welcome');
+    }
+
     function index(): View
     {
-        return view('static.user-home');
+        return view('static.user-dashboard');
     }
 
     function admin(): View
@@ -46,6 +51,6 @@ class StaticPageController extends Controller implements HasMiddleware
             "Perms" => ['data' => $perms, 'colour' => 'bg-sky-400',],
             "Products" => ['data' => $products, 'colour' => 'bg-slate-400',],
         ]);
-        return view('static.dashboard', compact(['statistics']));
+        return view('static.admin-dashboard', compact(['statistics']));
     }
 }
