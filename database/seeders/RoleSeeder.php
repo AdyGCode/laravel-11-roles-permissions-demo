@@ -30,7 +30,6 @@ class RoleSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-
         // Create each of the permissions ready for role creation
         foreach ($this->permissions as $permission) {
             Permission::create(['name' => $permission]);
@@ -65,5 +64,12 @@ class RoleSeeder extends Seeder
         $roleUser->givePermissionTo('product-create');
         $roleUser->givePermissionTo('product-delete');
         $roleUser->givePermissionTo('members');
+
+        // Unverified Guest Role
+        $roleGuest = Role::create(['name' => 'Guest']);
+        $roleGuest->givePermissionTo('product-list');
+        $roleGuest->givePermissionTo('product-show');
+        $roleGuest->givePermissionTo('members');
+
     }
 }
